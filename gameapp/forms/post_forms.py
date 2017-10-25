@@ -1,17 +1,36 @@
 # coding=utf-8
 
 from django import forms
-from gameapp.models.usuario_model import UsuarioModel
+from gameapp.models.post_model import PostModel
 
 
-class ClienteForm(forms.ModelForm):
-    username = forms.CharField(max_length=254, label='Nome de Usuário')
-    first_name = forms.CharField(max_length=40, label='Nome')
-    last_name = forms.CharField(max_length=40, label='Sobrenome')
-    password = forms.CharField(widget=forms.PasswordInput())
-    jogo = forms.CharField(max_length=40, label='Jogo Preferido')
+class PostForm(forms.ModelForm):
+    titulo = forms.CharField(max_length=30, label='Título')
+    texto = forms.CharField(max_length=300, label='Texto')
 
     class Meta:
-        model = UsuarioModel
+        model = PostModel
         fields = "__all__"
-        exclude = ['date_joined', 'is_active']
+        exclude = ['curtir', 'usuario']
+
+    def save(self, commit=True):
+        post = super(PostForm, self).save(commit=False)
+        if commit:
+            post.save()
+        return post
+
+
+class PostEditForm(forms.ModelForm):
+    titulo = forms.CharField(max_length=30, label='Título')
+    texto = forms.CharField(max_length=300, label='Texto')
+
+    class Meta:
+        model = PostModel
+        fields = "__all__"
+        exclude = ['curtir', 'usuario']
+
+    def save(self, commit=True):
+        post = super(PostEditForm, self).save(commit=False)
+        if commit:
+            post.save()
+        return post

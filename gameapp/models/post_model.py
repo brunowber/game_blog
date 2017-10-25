@@ -7,8 +7,8 @@ from usuario_model import UsuarioModel
 
 class PostModel(models.Model):
     titulo = models.CharField(max_length=30)
-    texto = models.CharField(max_length=200)
-    curtir = models.BooleanField(default=False)
+    texto = models.CharField(max_length=300)
+    curtir = models.BooleanField(default=False)# Arrumar colocar curtidas inteiro
     usuario = models.ForeignKey(UsuarioModel)
 
     class Meta:
