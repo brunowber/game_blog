@@ -64,9 +64,19 @@ class Login(View):
         if user:
             login(request, user)
             usuario = LoginForm(data=request.POST, instance=UsuarioModel.objects.get(username=username))
+
             if usuario.is_valid():
                 return redirect('/')
             else:
                 print usuario.errors
         else:
             return render(request, self.template, {'form': LoginForm})
+
+
+class Perfil(View):
+    template = "perfil.html"
+
+    def get(self, request):
+        jogo = UsuarioModel.objects.get(pk=request.user.id)
+        print jogo.jogo
+        return render(request, self.template, {'jogo': jogo.jogo})
