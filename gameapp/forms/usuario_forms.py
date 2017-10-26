@@ -41,3 +41,14 @@ class UsuarioEditForm(forms.ModelForm):
         if commit:
             usuario.save()
         return usuario
+
+
+class LoginForm(forms.ModelForm):
+    username = forms.CharField(max_length=40, label="Usuráio",
+                               widget=forms.TextInput(attrs={'placeholder': 'Usuário'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Senha'}) )
+
+    class Meta:
+        model = UsuarioModel
+        fields = ['username', 'password']
+

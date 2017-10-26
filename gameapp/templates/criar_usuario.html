@@ -7,12 +7,11 @@
     <div class='ui grid form'>
     <div class='four wide column'></div>
         <div class='ui ten wide column'>
-            <div class='four wide column'></div>
-            <div class='ten wide column'>
+            <div class='fourteen wide column'>
                 {% if form.instance.id %}
-                    <div method="POST" action="{% url 'gameapp:edita-usuario' form.instance.id %}" class='ui form'>
+                    <form method="POST" action="{% url 'gameapp:edita-usuario' form.instance.id %}" class='ui form'>
                 {% else %}
-                    <div method="POST" action="{% url 'gameapp:cadastro-usuario' %}" class='ui form'>
+                    <form method="POST" action="{% url 'gameapp:cadastro-usuario' %}" class='ui form'>
                 {% endif %}
                 {% csrf_token %}
                 <h2 class='ui header'><i class="user icon"></i>Prencha seus dados abaixo.</h2>
@@ -20,7 +19,6 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Nome</label>
-
                         {{ form.first_name }}
                         {% if form.first_name.errors %}
                             <div class="ui red pointing label">
@@ -84,7 +82,7 @@
                 <button type="submit" class="ui button">Salvar</button>
                 </form>
                 </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
