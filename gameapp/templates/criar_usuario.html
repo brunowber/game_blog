@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %} Criar Usuário  {% endblock %}
+
+{% block content %}
+
+    <div class='ui grid form'>
+    <div class='four wide column'></div>
+        <div class='ui ten wide column'>
+            <div class='four wide column'></div>
+            <div class='ten wide column'>
+                {% if form.instance.id %}
+                    <div method="POST" action="{% url 'gameapp:edita-usuario' form.instance.id %}" class='ui form'>
+                {% else %}
+                    <div method="POST" action="{% url 'gameapp:cadastro-usuario' %}" class='ui form'>
+                {% endif %}
+                {% csrf_token %}
+                <h2 class='ui header'><i class="user icon"></i>Prencha seus dados abaixo.</h2>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>Nome</label>
+
+                        {{ form.first_name }}
+                        {% if form.first_name.errors %}
+                            <div class="ui red pointing label">
+                                {{ form.first_name.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="field">
+                        <label>Sobrenome</label>
+                        {{ form.last_name }}
+                        {% if form.last_name.errors %}
+                            <div class="ui red pointing label">
+                                {{ form.last_name.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                <div class='two fields'>
+                    <div class="field">
+                        <label>Usu&aacute;rio</label>
+
+                        {{ form.username }}
+                        {% if form.username.errors %}
+                            <div class="ui red pointing label">
+                                {{ form.username.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                    <div class="field">
+                        <label>Senha</label>
+
+                        {{ form.password }}
+                        {% if form.password.errors %}
+                            <div class="ui red pointing label">
+                                {{ form.password.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="field">
+                        <label>Jogo Favorito</label>
+
+                        {{ form.jogo }}
+                        {% if form.jogo.errors %}
+                            <div class="ui red pointing label">
+                                {{ form.jogo.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                <button type="submit" class="ui button">Salvar</button>
+                </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

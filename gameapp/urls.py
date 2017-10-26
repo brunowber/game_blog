@@ -1,3 +1,5 @@
+from gameapp import views
+
 from django.conf.urls import url
 
 from gameapp.views.usuario_view import CadastraUsuario
@@ -5,6 +7,7 @@ from gameapp.views.post_view import CadastraPost, CadastraComentario
 
 
 urlpatterns = [
+    url(r'^$', views.index, name='index'),
     url(r'^cad_usuario/$', CadastraUsuario.as_view(), name='cadastro-usuario'),
     url(r'^edita_usuario/(?P<identificador>\d+)/$', CadastraUsuario.as_view(), name='edita-usuario'),
 
