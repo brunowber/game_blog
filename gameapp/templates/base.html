@@ -1,0 +1,52 @@
+{% load static %}
+<html>
+<head>
+    <title> {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/base.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/font-awesome-4.3.0/css/font-awesome.css" %}"/>
+    <link rel="stylesheet" href="{% static "/css/semantic.css" %}"/>
+</head>
+<body>
+<header>
+    <div class="ui inverted segment">
+        <div class="ui inverted secondary menu">
+            <a href="/" class="item">
+                Home
+            </a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'gameapp:criar-post' user.id %}" class="item">
+                Criar Postagem
+            </a>
+        {% endif %}
+            <a class="item">
+                Friends
+            </a>
+            <div class="direita">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'gameapp:edita-usuario' user.id %}" class="item"><i class="user icon"></i>Editar
+                        Perfil</a>
+                    <a href="/logout/" class="item"><i class="sign out icon"></i>Logout</a>
+                {% endif %}
+                {% if user.is_anonymous %}
+                    <a href="/cad_usuario/" class="item"><i class="add user icon"></i>Criar Conta</a>
+                    <a href="/login/" class="item"><i class="sign in icon"></i>Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+
+<article class="cor">
+    {% block content %}
+    {% endblock %}
+</article>
+<footer>
+    <div class="ui inverted segment">
+        <div class="ui inverted secondary center">
+            <p>Desenvolvido por mim</p>
+
+        </div>
+    </div>
+</footer>
+</body>
+</html>
