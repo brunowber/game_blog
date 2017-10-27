@@ -18,7 +18,7 @@ urlpatterns = [
     url(r'^edita_comentario/(?P<identificador>\w+)/$', CadastraComentario.as_view(), name='edita-comentario'),
 
     url(r'^login/$', Login.as_view(), name='login'),
-    url(r'^logout/$', auth_views.logout, {'template_name': 'base.html'}, name='logout'),
+    url(r'^logout/$', auth_views.logout, {'template_name': 'logout.html'}, name='logout'),
 
     url(r'^perfil/$', Perfil.as_view(), name='perfil-usuario'),
     url(r'^criar_post/(?P<identificador>\d+)/$', CadastraPost.as_view(), name='criar-post'),

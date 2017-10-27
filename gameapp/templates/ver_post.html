@@ -14,7 +14,11 @@
 
                 </tbody>
             </table>
+            {% if user.is_authenticated %}
             <a href="/"> <i class=" thumbs outline up icon blue"></i></a>{{ post.curtidas }}
+                {% else %}
+                <i class=" thumbs outline up icon blue"></i>{{ post.curtidas }}
+            {% endif %}
         </div>
 
     </div>
@@ -38,10 +42,16 @@
                                     <div class="text">
                                         {{ comentario.comentario }}
                                     </div>
+                                    {% if user.is_authenticated %}
                                     <div class="actions">
                                         <a href="/"> <i
                                                 class=" thumbs outline up icon blue"></i></a>{{ comentario.like }}
                                     </div>
+                                        {% else %}
+
+                                        <i class=" thumbs outline up icon blue"></i>{{ comentario.like }}
+
+                                    {% endif %}
                                 </td>
                             </tr>
                             </tbody>
@@ -49,7 +59,7 @@
                     </div>
                 {% endfor %}
             </div>
-
+            {% if user.is_authenticated %}
             <form method="POST" action="{% url 'gameapp:cadastrar-comentario' post.id %}" class='margem ui reply form'>
                 {% csrf_token %}
                 <div class="field">
@@ -67,6 +77,7 @@
                     <i class="icon edit"></i> Comentar
                 </button>
             </form>
+        {% endif %}
         </div>
     </div>
 
