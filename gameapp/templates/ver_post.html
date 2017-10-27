@@ -44,7 +44,8 @@
                                     </div>
                                     {% if user.is_authenticated %}
                                     <div class="actions">
-                                        <a href="/"> <i
+
+                                        <a href="{% url 'gameapp:curtir-comentario' comentario.id %}"> <i
                                                 class=" thumbs outline up icon blue"></i></a>{{ comentario.like }}
                                     </div>
                                         {% else %}

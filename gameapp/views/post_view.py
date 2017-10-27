@@ -5,8 +5,10 @@ from django.views import View
 from gameapp.models.post_model import PostModel
 from gameapp.models.usuario_model import UsuarioModel
 from gameapp.models.comentario_model import ComentarioModel
+from gameapp.models.curtir_model import CurtirModel
 from gameapp.forms.post_forms import PostForm, PostEditForm
 from gameapp.forms.comentario_forms import ComentarioForm
+
 
 
 class CadastraPost(View):
@@ -90,3 +92,17 @@ class VerPost(View):
             context_dict['comentar'] = form
 
             return render(request, self.template, context_dict, {'form': form})
+
+
+class Like(View):
+
+    def get(self, request, identificador=None):
+        user = UsuarioModel.objects.get(pk=request.user.id)
+        comentario = ComentarioModel.objects.get(pk=identificador)
+        comentario.like += 1
+        comentario.save()
+        print comentario
+        curtida = CurtirModel.objects.create(usuario=user, comententario=comentario)
+        curtida.save()
+
+        return redirect('/')
