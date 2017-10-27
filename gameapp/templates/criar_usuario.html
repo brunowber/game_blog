@@ -10,11 +10,13 @@
             <div class='fourteen wide column'>
                 {% if form.instance.id %}
                     <form method="POST" action="{% url 'gameapp:edita-usuario' form.instance.id %}" class='ui form'>
+                    <h2 class='ui header'><i class="user icon"></i>Altere seus dados abaixo.</h2>
                 {% else %}
                     <form method="POST" action="{% url 'gameapp:cadastro-usuario' %}" class='ui form'>
+                    <h2 class='ui header'><i class="user icon"></i>Prencha seus dados abaixo.</h2>
                 {% endif %}
                 {% csrf_token %}
-                <h2 class='ui header'><i class="user icon"></i>Prencha seus dados abaixo.</h2>
+
 
                 <div class="two fields">
                     <div class="field">
@@ -39,18 +41,18 @@
                     </div>
                 </div>
 
+                {% if not user.id %}
                 <div class='two fields'>
                     <div class="field">
                         <label>Usu&aacute;rio</label>
-
                         {{ form.username }}
                         {% if form.username.errors %}
                             <div class="ui red pointing label">
                                 {{ form.username.errors }}
                             </div>
                         {% endif %}
-
                     </div>
+                {% endif %}
 
                     <div class="field">
                         <label>Senha</label>

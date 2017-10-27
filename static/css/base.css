@@ -8,7 +8,7 @@ article {
 }
 
 body {
-    height: 100%;
+    height: 80%;
 }
 
 footer {
@@ -24,3 +24,8 @@ footer {
 }
 .login {max-width: 50%;}
 
+.cor{background: #DCDCDC}
+
+.centralizar{text-align: center;}
+
+.margem{padding-top: 20px;}

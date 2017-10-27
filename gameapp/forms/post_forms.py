@@ -6,7 +6,7 @@ from gameapp.models.post_model import PostModel
 
 class PostForm(forms.ModelForm):
     titulo = forms.CharField(max_length=30, label='Título')
-    texto = forms.CharField(max_length=300, label='Texto')
+    texto = forms.CharField(max_length=1000, label='Texto', widget=forms.Textarea)
 
     class Meta:
         model = PostModel

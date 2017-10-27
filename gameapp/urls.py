@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'template_name': 'base.html'}, name='logout'),
 
     url(r'^perfil/$', Perfil.as_view(), name='perfil-usuario'),
+    url(r'^criar_post/(?P<identificador>\d+)$', CadastraPost.as_view(), name='criar-post'),
 ]

@@ -8,7 +8,7 @@ class UsuarioForm(forms.ModelForm):
     username = forms.CharField(max_length=254, label='Nome de Usuário')
     first_name = forms.CharField(max_length=40, label='Nome')
     last_name = forms.CharField(max_length=40, label='Sobrenome')
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(max_length=20, widget=forms.PasswordInput())
     jogo = forms.CharField(max_length=40, label='Jogo Preferido')
 
     class Meta:
@@ -27,7 +27,7 @@ class UsuarioForm(forms.ModelForm):
 class UsuarioEditForm(forms.ModelForm):
     first_name = forms.CharField(max_length=40, label='Nome')
     last_name = forms.CharField(max_length=40, label='Sobrenome')
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(max_length=20, widget=forms.PasswordInput())
     jogo = forms.CharField(max_length=40, label='Jogo Preferido')
 
     class Meta:
@@ -46,7 +46,7 @@ class UsuarioEditForm(forms.ModelForm):
 class LoginForm(forms.ModelForm):
     username = forms.CharField(max_length=40, label="Usuráio",
                                widget=forms.TextInput(attrs={'placeholder': 'Usuário'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Senha'}) )
+    password = forms.CharField(max_length=20, widget=forms.PasswordInput(attrs={'placeholder': 'Senha'}) )
 
     class Meta:
         model = UsuarioModel

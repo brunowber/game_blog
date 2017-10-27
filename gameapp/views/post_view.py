@@ -10,31 +10,22 @@ from gameapp.forms.comentario_forms import ComentarioForm, ComentarioEditForm
 
 
 class CadastraPost(View):
-    template = 'criar_post.html'
+    template = 'postagem.html'
 
     def get(self, request, identificador=None):
         """Envia o formulário para a criação ou edição dos Posts"""
 
-        if identificador:
-            post = PostModel.objects.get(pk=identificador)
-            form = PostEditForm(instance=post)
-        else:
-            form = PostForm()
+        form = PostForm()
 
         return render(request, self.template, {'form': form})
 
     def post(self, request, identificador=None):
         """Envia para o banco os Posts criados ou editados"""
 
-        usuario = request.user.id
-        if identificador:
-            post = PostModel.objects.get(pk=identificador)
-            form = PostEditForm(instance=post, data=request.POST)
-        else:
-            form = PostForm(request.POST)
+        form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.usuario = UsuarioModel.objects.get(pk=usuario)
+            post.usuario = UsuarioModel.objects.get(pk=identificador)
             post.save()
             return redirect('/')
 
