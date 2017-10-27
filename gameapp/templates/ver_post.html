@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %} GameBlog  {% endblock %}
+
+{% block content %}
+    <div class="ui grid form" style="padding-top: 50px;">aa
+        <div class="five wide column"></div>
+        <div class="six wide column aligned center"><h3>{{ post.titulo }}</h3>
+            <table class="ui celled table">
+                <tbody>
+                <tr>
+                    <td>{{ post.texto }}</td>
+                </tr>
+
+                </tbody>
+            </table>
+            <a href="/"> <i class=" thumbs outline up icon blue"></i></a>{{ post.curtidas }}
+        </div>
+
+    </div>
+
+
+    <div class="ui grid form comments margem">
+        <div class="five wide column"></div>
+        <div class="six wide column">
+            <h3 class="ui dividing header">Comentarios</h3>
+            <div class="comment">
+                {% for comentario in comentarios %}
+                    <div class="content margem">
+                        <table class="ui celled table">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a class="author">{{ comentario.usuario.first_name }}</a>
+                                    <div class="metadata">
+                                        <span class="date">{{ comentario.date }}</span>
+                                    </div>
+                                    <div class="text">
+                                        {{ comentario.comentario }}
+                                    </div>
+                                    <div class="actions">
+                                        <a href="/"> <i
+                                                class=" thumbs outline up icon blue"></i></a>{{ comentario.like }}
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <form method="POST" action="{% url 'gameapp:cadastrar-comentario' post.id %}" class='margem ui reply form'>
+                {% csrf_token %}
+                <div class="field">
+                    <label>{{ comentar.comentario.label }}</label>
+                    {{ comentar.comentario }}
+                    {% if form.comentario.errors %}
+                        <div class="ui red pointing label">
+                            {{ form.comentario.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <button type="submit" class="ui blue labeled submit icon button">
+                    <i class="icon edit"></i> Comentar
+                </button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -3,7 +3,7 @@ from gameapp import views
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
 from gameapp.views.usuario_view import CadastraUsuario, Login, Perfil
-from gameapp.views.post_view import CadastraPost, CadastraComentario
+from gameapp.views.post_view import CadastraPost, CadastraComentario, VerPost
 
 
 urlpatterns = [
@@ -21,5 +21,7 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'template_name': 'base.html'}, name='logout'),
 
     url(r'^perfil/$', Perfil.as_view(), name='perfil-usuario'),
-    url(r'^criar_post/(?P<identificador>\d+)$', CadastraPost.as_view(), name='criar-post'),
+    url(r'^criar_post/(?P<identificador>\d+)/$', CadastraPost.as_view(), name='criar-post'),
+    url(r'^ver_post/(?P<identificador>\d+)/$', VerPost.as_view(), name='ver-post'),
+    url(r'^ver_post/(?P<identificador>\d+)/$', VerPost.as_view(), name='cadastrar-comentario'),
 ]

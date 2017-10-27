@@ -5,7 +5,7 @@ from gameapp.models.comentario_model import ComentarioModel
 
 
 class ComentarioForm(forms.ModelForm):
-    comentario = forms.CharField(max_length=300, label='Comentário')
+    comentario = forms.CharField(max_length=1000, label='Comentario', widget=forms.Textarea)
 
     class Meta:
         model = ComentarioModel
@@ -19,7 +19,7 @@ class ComentarioForm(forms.ModelForm):
 
 
 class ComentarioEditForm(forms.ModelForm):
-    Comentario = forms.CharField(max_length=300, label='Comentário')
+    comentario = forms.CharField(max_length=1000, label='Texto', widget=forms.Textarea)
 
     class Meta:
         model = ComentarioModel

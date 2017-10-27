@@ -74,7 +74,7 @@ class Login(View):
 
 
 class Perfil(View):
-    template = "perfil.html"
+    template = "ver_post.html"
 
     def get(self, request):
         jogo = UsuarioModel.objects.get(pk=request.user.id)

@@ -27,8 +27,7 @@
                     <tr>
                         <td>{{ post.titulo }}</td>
                         <td>{{ post.usuario }}</td>
-                        {{ user.id }}
-                        <td><a href="{% url 'gameapp:edita-usuario' user.id %}"><i class="arrow right icon"></i></a></td>
+                        <td><a href="{% url 'gameapp:ver-post' post.id %}"><i class="arrow right icon"></i></a></td>
                     </tr>
                     {% endfor %}
 

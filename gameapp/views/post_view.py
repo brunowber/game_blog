@@ -52,7 +52,6 @@ class CadastraComentario(View):
            # form = ComentarioEditForm(instance=comentario, data=request.POST)
         #else:
         form = ComentarioForm(request.POST)
-        print form
         print "form comentario", form.is_valid()
         if form.is_valid():
             comentario = form.save(commit=False)
@@ -63,3 +62,39 @@ class CadastraComentario(View):
             return redirect('/')
 
         return render(request, self.template, {'form': form})
+
+
+class VerPost(View):
+    template = 'ver_post.html'
+
+    def get(self, request, identificador=None):
+        context_dict = {}
+        post = PostModel.objects.get(pk=identificador)
+        context_dict['post'] = post
+        comentarios = ComentarioModel.objects.filter(post=identificador)
+        context_dict['comentarios'] = comentarios
+        form = ComentarioForm()
+        context_dict['comentar'] = form
+
+        return render(request, self.template, context_dict, {'form': form})
+
+    def post(self, request, identificador=None):
+        print identificador
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            print "teste"
+            comentario = form.save(commit=False)
+            comentario.usuario = UsuarioModel.objects.get(pk=request.user.id)
+            comentario.post = PostModel.objects.get(pk=identificador)
+            comentario.like = 0
+            comentario.save()
+
+            context_dict = {}
+            post = PostModel.objects.get(pk=identificador)
+            context_dict['post'] = post
+            comentarios = ComentarioModel.objects.filter(post=identificador)
+            context_dict['comentarios'] = comentarios
+            form = ComentarioForm()
+            context_dict['comentar'] = form
+
+            return render(request, self.template, context_dict, {'form': form})

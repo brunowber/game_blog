@@ -8,8 +8,12 @@ from usuario_model import UsuarioModel
 class PostModel(models.Model):
     titulo = models.CharField(max_length=30)
     texto = models.CharField(max_length=300)
-    curtir = models.BooleanField(default=False)# Arrumar colocar curtidas inteiro
+    curtidas = models.IntegerField(default=0)
     usuario = models.ForeignKey(UsuarioModel)
 
     class Meta:
         app_label = "gameapp"
+
+    def __unicode__(self):
+        return self.titulo
+

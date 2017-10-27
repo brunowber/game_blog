@@ -3,9 +3,8 @@
 {% block title %} Criar Usuário  {% endblock %}
 
 {% block content %}
-
     <div class='ui grid form'>
-    <div class='four wide column'></div>
+        <div class='four wide column'></div>
         <div class='ui ten wide column'>
             <div class='fourteen wide column'>
                 {% if form.instance.id %}
@@ -42,7 +41,7 @@
                 </div>
 
                 {% if not user.id %}
-                <div class='two fields'>
+                    <div class='two fields'>
                     <div class="field">
                         <label>Usu&aacute;rio</label>
                         {{ form.username }}
@@ -54,17 +53,17 @@
                     </div>
                 {% endif %}
 
-                    <div class="field">
-                        <label>Senha</label>
+                <div class="field">
+                    <label>Senha</label>
 
-                        {{ form.password }}
-                        {% if form.password.errors %}
-                            <div class="ui red pointing label">
-                                {{ form.password.errors }}
-                            </div>
-                        {% endif %}
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        <div class="ui red pointing label">
+                            {{ form.password.errors }}
+                        </div>
+                    {% endif %}
 
-                    </div>
+                </div>
                 </div>
 
                 <div class="">
@@ -83,10 +82,10 @@
 
                 <button type="submit" class="ui button">Salvar</button>
                 </form>
-                </div>
-                </form>
             </div>
+            </form>
         </div>
+    </div>
     </div>
 
 {% endblock %}
