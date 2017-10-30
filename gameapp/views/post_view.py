@@ -2,13 +2,14 @@
 
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic import ListView
+
 from gameapp.models.post_model import PostModel
 from gameapp.models.usuario_model import UsuarioModel
 from gameapp.models.comentario_model import ComentarioModel
 from gameapp.models.curtir_model import CurtirModel
 from gameapp.forms.post_forms import PostForm, PostEditForm
 from gameapp.forms.comentario_forms import ComentarioForm
-
 
 
 class CadastraPost(View):
@@ -25,6 +26,7 @@ class CadastraPost(View):
         """Envia para o banco os Posts criados ou editados"""
 
         form = PostForm(request.POST)
+        print form.is_valid()
         if form.is_valid():
             post = form.save(commit=False)
             post.usuario = UsuarioModel.objects.get(pk=identificador)
@@ -95,14 +97,70 @@ class VerPost(View):
 
 
 class Like(View):
+    template = 'ver_post.html'
 
     def get(self, request, identificador=None):
-        user = UsuarioModel.objects.get(pk=request.user.id)
+        context_dict = {}
+        post = PostModel.objects.get(pk=identificador)
+        context_dict['post'] = post
+        comentarios = ComentarioModel.objects.filter(post=identificador)
+        context_dict['comentarios'] = comentarios
+        form = ComentarioForm()
+        context_dict['comentar'] = form
+
+        return render(request, self.template, context_dict, {'form': form})
+
+    def post(self, request, identificador=None):
         comentario = ComentarioModel.objects.get(pk=identificador)
         comentario.like += 1
         comentario.save()
-        print comentario
-        curtida = CurtirModel.objects.create(usuario=user, comententario=comentario)
+        curtida = CurtirModel.objects.create(coment=comentario)
         curtida.save()
 
-        return redirect('/')
+        context_dict = {}
+        print comentario.post_id
+        post = PostModel.objects.get(pk=comentario.post.id)
+        context_dict['post'] = post
+        comentarios = ComentarioModel.objects.filter(post=comentario.post.id)
+        context_dict['comentarios'] = comentarios
+        form = ComentarioForm()
+        context_dict['comentar'] = form
+        return render(request, self.template, context_dict, {'form': form})
+
+
+class LikePost(View):
+    template = 'ver_post.html'
+
+    def get(self, request, identificador=None):
+        context_dict = {}
+        post = PostModel.objects.get(pk=identificador)
+        context_dict['post'] = post
+        comentarios = ComentarioModel.objects.filter(post=identificador)
+        context_dict['comentarios'] = comentarios
+        form = ComentarioForm()
+        context_dict['comentar'] = form
+
+        return render(request, self.template, context_dict, {'form': form})
+
+    def post(self, request, identificador=None):
+        post = PostModel.objects.get(pk=identificador)
+        post.curtidas += 1
+        post.save()
+        # curtida = CurtirModel.objects.create(usuario=user, comententario=comentario)
+
+        context_dict = {'post': post}
+        comentarios = ComentarioModel.objects.filter(post=identificador)
+        context_dict['comentarios'] = comentarios
+        form = ComentarioForm()
+        context_dict['comentar'] = form
+        return render(request, self.template, context_dict, {'form': form})
+
+
+class PostagemListarViews(ListView):
+    """Classe genérica de view de listagem dos posts"""
+
+    template_name = 'todas_postagens.html'
+
+    def get_queryset(self):
+        """Método de definição de queryset"""
+        return PostModel.objects.all().order_by('-pk')

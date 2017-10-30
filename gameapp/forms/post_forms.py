@@ -11,7 +11,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = PostModel
         fields = "__all__"
-        exclude = ['curtir', 'usuario']
+        exclude = ['curtir', 'usuario', 'curtidas']
 
     def save(self, commit=True):
         post = super(PostForm, self).save(commit=False)

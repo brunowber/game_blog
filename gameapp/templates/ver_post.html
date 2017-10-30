@@ -3,9 +3,13 @@
 {% block title %} GameBlog  {% endblock %}
 
 {% block content %}
-    <div class="ui grid form" style="padding-top: 50px;">aa
+    <div class="ui grid form" style="padding-top: 50px;">
         <div class="five wide column"></div>
-        <div class="six wide column aligned center"><h3>{{ post.titulo }}</h3>
+        <div class="eight wide column aligned center">
+            <h3>Usuário: {{ post.usuario }}</h3>
+            <h3>jogo Favorito: {{ post.usuario.jogo }}</h3>
+            <h3>Título: {{ post.titulo }}</h3>
+
             <table class="ui celled table">
                 <tbody>
                 <tr>
@@ -15,18 +19,20 @@
                 </tbody>
             </table>
             {% if user.is_authenticated %}
-            <a href="/"> <i class=" thumbs outline up icon blue"></i></a>{{ post.curtidas }}
-                {% else %}
+                <form method="POST" action="{% url 'gameapp:curtir-post' post.id %}">
+                    <button type="submit">
+                        {% csrf_token %}
+                        <i class=" thumbs outline up icon blue"></i>{{ post.curtidas }}</button>
+                </form>
+            {% else %}
                 <i class=" thumbs outline up icon blue"></i>{{ post.curtidas }}
             {% endif %}
         </div>
-
     </div>
-
 
     <div class="ui grid form comments margem">
         <div class="five wide column"></div>
-        <div class="six wide column">
+        <div class="eight wide column">
             <h3 class="ui dividing header">Comentarios</h3>
             <div class="comment">
                 {% for comentario in comentarios %}
@@ -43,12 +49,18 @@
                                         {{ comentario.comentario }}
                                     </div>
                                     {% if user.is_authenticated %}
-                                    <div class="actions">
+                                        <div class="actions">
 
-                                        <a href="{% url 'gameapp:curtir-comentario' comentario.id %}"> <i
-                                                class=" thumbs outline up icon blue"></i></a>{{ comentario.like }}
-                                    </div>
-                                        {% else %}
+                                            <form method="POST" action="{% url 'gameapp:curtir-comentario' comentario.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit">
+                                                    <i class=" thumbs outline up icon blue"></i>{{ comentario.like }}
+                                                </button>
+                                            </form>
+
+                                            </button>
+                                        </div>
+                                    {% else %}
 
                                         <i class=" thumbs outline up icon blue"></i>{{ comentario.like }}
 
@@ -61,24 +73,25 @@
                 {% endfor %}
             </div>
             {% if user.is_authenticated %}
-            <form method="POST" action="{% url 'gameapp:cadastrar-comentario' post.id %}" class='margem ui reply form'>
-                {% csrf_token %}
-                <div class="field">
-                    <label>{{ comentar.comentario.label }}</label>
-                    {{ comentar.comentario }}
-                    {% if form.comentario.errors %}
-                        <div class="ui red pointing label">
-                            {{ form.comentario.errors }}
-                        </div>
-                    {% endif %}
+                <form method="POST" action="{% url 'gameapp:cadastrar-comentario' post.id %}"
+                      class='margem ui reply form'>
+                    {% csrf_token %}
+                    <div class="field">
+                        <label>{{ comentar.comentario.label }}</label>
+                        {{ comentar.comentario }}
+                        {% if form.comentario.errors %}
+                            <div class="ui red pointing label">
+                                {{ form.comentario.errors }}
+                            </div>
+                        {% endif %}
 
-                </div>
+                    </div>
 
-                <button type="submit" class="ui blue labeled submit icon button">
-                    <i class="icon edit"></i> Comentar
-                </button>
-            </form>
-        {% endif %}
+                    <button type="submit" class="ui blue labeled submit icon button">
+                        <i class="icon edit"></i> Comentar
+                    </button>
+                </form>
+            {% endif %}
         </div>
     </div>
 

@@ -18,8 +18,8 @@
                 Criar Postagem
             </a>
         {% endif %}
-            <a class="item">
-                Friends
+            <a href="{% url 'gameapp:postagens' %}" class="item">
+                Ver todos os posts
             </a>
             <div class="direita">
                 {% if user.is_authenticated %}
@@ -36,9 +36,12 @@
     </div>
 </header>
 
-<article class="cor">
+<article class="ui internally celled grid">
+<div class="three wide column"></div>
+<div class="ten wide column cor">
     {% block content %}
     {% endblock %}
+</div>
 </article>
 <footer>
     <div class="ui inverted segment">
