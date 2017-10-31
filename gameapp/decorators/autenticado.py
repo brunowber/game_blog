@@ -1,7 +1,11 @@
+# -*- coding: utf-8 -*-
+"""Metodo decorator para evitar get em páginas que precisam
+de autenticação"""
 from django.shortcuts import redirect
 
 
 def autenticado():
+    """Função de autenticação"""
     def _dec(view_func):
         def _view(request, *args, **kwargs):
             if str(request.user) == "AnonymousUser":

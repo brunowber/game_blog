@@ -8,6 +8,7 @@ from gameapp.models.post_model import PostModel
 
 
 class CurtirModel(models.Model):
+    """Classa da model de curtidas"""
 
     coment = models.ForeignKey(ComentarioModel, default=False)
     usuario = models.ForeignKey(UsuarioModel)
@@ -15,3 +16,6 @@ class CurtirModel(models.Model):
 
     class Meta:
         app_label = "gameapp"
+
+    def __unicode__(self):
+        return self.usuario.username

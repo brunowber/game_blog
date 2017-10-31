@@ -1,3 +1,5 @@
-from index import index
-from usuario_view import *
-from post_view import *
+"""Init das views"""
+from gameapp.views.index import index
+from gameapp.views.usuario_view import CadastraUsuario, Login, Perfil
+from gameapp.views.post_view import CadastraPost, CadastraComentario, LikePost, VerPost,\
+    Like, PostagemListarViews

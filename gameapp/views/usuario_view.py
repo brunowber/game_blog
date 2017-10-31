@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""Classe para utilização dos usuários"""
 from django.contrib.auth import authenticate, login
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
@@ -7,10 +8,12 @@ from django.views import View
 
 from gameapp.decorators.autenticado import autenticado
 from gameapp.models.usuario_model import UsuarioModel
-from gameapp.forms.usuario_forms import UsuarioForm, UsuarioEditForm, LoginForm
+from gameapp.forms.usuario_forms import UsuarioForm, UsuarioEditForm,\
+    LoginForm
 
 
 class CadastraUsuario(View):
+    """Classe para criação e edição dos usuários"""
     template = 'criar_usuario.html'
 
     def get(self, request, identificador=None):
@@ -41,19 +44,23 @@ class CadastraUsuario(View):
 
 
 class Login(View):
+    """Classe para utilização do Login"""
     template = 'login.html'
 
     def get(self, request):
+        """envia o formulário de login para a página"""
         form = LoginForm()
 
         return render(request, self.template, {'form': form})
 
     def post(self, request):
+        """Faz a verificação se o usuário e senha estão corretos"""
         username = request.POST['username']
         password = request.POST['password']
         print username, password
         try:
-            form = LoginForm(data=request.POST, instance=UsuarioModel.objects.get(username=username))
+            form = LoginForm(data=request.POST, instance=UsuarioModel.objects.get(
+                username=username))
         except ObjectDoesNotExist:
             form = LoginForm(data=request.POST)
         if not form.is_valid():
@@ -66,7 +73,8 @@ class Login(View):
         print user
         if user:
             login(request, user)
-            usuario = LoginForm(data=request.POST, instance=UsuarioModel.objects.get(username=username))
+            usuario = LoginForm(data=request.POST, instance=UsuarioModel.objects.get(
+                username=username))
 
             if usuario.is_valid():
                 return redirect('/')
@@ -77,10 +85,12 @@ class Login(View):
 
 
 class Perfil(View):
+    """Perfil para visualização e edição do usuário"""
     template = "ver_post.html"
 
     @method_decorator(autenticado())
     def get(self, request):
+        """Envia os dados para a página"""
         jogo = UsuarioModel.objects.get(pk=request.user.id)
         print jogo.jogo
         return render(request, self.template, {'jogo': jogo.jogo})

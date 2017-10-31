@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+"""View de index"""
 from django.shortcuts import render
 from gameapp.models.post_model import PostModel
 
 
 def index(request):
+    """View para chamar a página principal"""
     template = "index.html"
 
     context_dict = {}

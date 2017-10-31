@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""View para utilização dos posts"""
 
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
@@ -15,6 +16,7 @@ from gameapp.forms.comentario_forms import ComentarioForm
 
 
 class CadastraPost(View):
+    """View para fazer o cadastro e edição dos posts"""
     template = 'postagem.html'
 
     @method_decorator(autenticado())
@@ -50,11 +52,12 @@ class CadastraPost(View):
 
 
 class CadastraComentario(View):
+    """Classe para fazer o cadastro dos comentários"""
     template = 'criar_comentario.html'
 
     @method_decorator(autenticado())
     def get(self, request, identificador=None):
-        """Envia o formulário para a criação ou edição dos Comentarios"""
+        """Envia o formulário para a criação ou edição dos comentários"""
 
         form = ComentarioForm()
 
@@ -62,7 +65,7 @@ class CadastraComentario(View):
 
     @method_decorator(autenticado())
     def post(self, request, identificador=None):
-        """Envia para o banco os Comentarios criados ou editados"""
+        """Envia para o banco os comentários criados ou editados"""
 
         form = ComentarioForm(request.POST)
         if form.is_valid():
@@ -77,9 +80,11 @@ class CadastraComentario(View):
 
 
 class VerPost(View):
+    """Classe para visualização dos posts"""
     template = 'ver_post.html'
 
     def get(self, request, identificador=None):
+        """Requisita o post a ser visualizado"""
         context_dict = {}
         post = PostModel.objects.get(pk=identificador)
         context_dict['post'] = post
@@ -92,6 +97,7 @@ class VerPost(View):
 
     @method_decorator(autenticado())
     def post(self, request, identificador=None):
+        """Envia os comentários para a postagem"""
         print identificador
         form = ComentarioForm(request.POST)
         if form.is_valid():
@@ -105,8 +111,10 @@ class VerPost(View):
 
 
 class Like(View):
+    """Classe para mexer nas curtidas dos comentários"""
     @method_decorator(autenticado())
     def post(self, request, identificador=None):
+        """Função para aumentar ou diminuir os likes dos comentários"""
         user = UsuarioModel.objects.get(pk=request.user.id)
         comentario = ComentarioModel.objects.get(pk=identificador)
         curtidas = CurtirModel.objects.filter(usuario=user, coment=comentario)
@@ -125,10 +133,12 @@ class Like(View):
 
 
 class LikePost(View):
+    """Classe para dar curtidas ao post"""
     template = 'ver_post.html'
 
     @method_decorator(autenticado())
     def post(self, request, identificador=None):
+        """Função para aumentar e diminuir as curtidas dos posts"""
         user = UsuarioModel.objects.get(pk=request.user.id)
         post = PostModel.objects.get(pk=identificador)
         curtidas = CurtirModel.objects.filter(usuario=user, post=post)

@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
+"""Forms para usuários"""
 
 from django import forms
 from gameapp.models.usuario_model import UsuarioModel
 
 
 class UsuarioForm(forms.ModelForm):
+    """Forms para criação de usuários"""
     username = forms.CharField(max_length=254, label='Nome de Usuário')
     first_name = forms.CharField(max_length=40, label='Nome')
     last_name = forms.CharField(max_length=40, label='Sobrenome')
@@ -25,6 +27,7 @@ class UsuarioForm(forms.ModelForm):
 
 
 class UsuarioEditForm(forms.ModelForm):
+    """Forms para edição de usuários"""
     first_name = forms.CharField(max_length=40, label='Nome')
     last_name = forms.CharField(max_length=40, label='Sobrenome')
     password = forms.CharField(max_length=20, widget=forms.PasswordInput())

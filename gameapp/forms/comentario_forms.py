@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
-
+"""Forms para os comentarios"""
 from django import forms
 from gameapp.models.comentario_model import ComentarioModel
 
 
 class ComentarioForm(forms.ModelForm):
-    comentario = forms.CharField(max_length=1000, label='Comentario', widget=forms.Textarea)
+    """Form para criação de comentario"""
+    comentario = forms.CharField(max_length=1000, label='Comentario',
+                                 widget=forms.Textarea)
 
     class Meta:
         model = ComentarioModel
