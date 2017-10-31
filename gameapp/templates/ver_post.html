@@ -6,8 +6,8 @@
     <div class="ui grid form" style="padding-top: 50px;">
         <div class="five wide column"></div>
         <div class="eight wide column aligned center">
-            <h3>Usuário: {{ post.usuario }}</h3>
-            <h3>jogo Favorito: {{ post.usuario.jogo }}</h3>
+            <h3>Últimas postagens: {{ post.usuario }}</h3>
+            <h3>Jogo Favorito: {{ post.usuario.jogo }}</h3>
             <h3>Título: {{ post.titulo }}</h3>
 
             <table class="ui celled table">
@@ -18,10 +18,11 @@
 
                 </tbody>
             </table>
-        {% if post.usuario.id == user.id  %}
-            <a href="{% url 'gameapp:criar-post' post.id %}" class="item">
-                <button> Editar</button> </a>
-                {% endif %}
+            {% if post.usuario.id == user.id %}
+                <a href="{% url 'gameapp:criar-post' post.id %}" class="item">
+                    <button> Editar</button>
+                </a>
+            {% endif %}
             {% if user.is_authenticated %}
                 <form method="POST" action="{% url 'gameapp:curtir-post' post.id %}">
                     <button type="submit">
@@ -55,7 +56,8 @@
                                     {% if user.is_authenticated %}
                                         <div class="actions">
 
-                                            <form method="POST" action="{% url 'gameapp:curtir-comentario' comentario.id %}">
+                                            <form method="POST"
+                                                  action="{% url 'gameapp:curtir-comentario' comentario.id %}">
                                                 {% csrf_token %}
                                                 <button type="submit">
                                                     <i class=" thumbs outline up icon blue"></i>{{ comentario.like }}

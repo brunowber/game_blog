@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from gameapp.models.post_model import PostModel
 
@@ -12,5 +12,3 @@ def index(request):
     context_dict['posts'] = posts
 
     return render(request, template, context_dict)
-
-

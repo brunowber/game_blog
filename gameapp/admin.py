@@ -1,10 +1,12 @@
-from django.contrib import admin
-from models.usuario_model import UsuarioModel
-from models.post_model import PostModel
-from models.curtir_model import CurtirModel
-from models.comentario_model import ComentarioModel
+# -*- coding: utf-8 -*-
+"""Página da administração do Django"""
 
-# Register your models here.
+from django.contrib import admin
+from gameapp.models.usuario_model import UsuarioModel
+from gameapp.models.post_model import PostModel
+from gameapp.models.curtir_model import CurtirModel
+from gameapp.models.comentario_model import ComentarioModel
+
 admin.site.register(UsuarioModel)
 admin.site.register(ComentarioModel)
 admin.site.register(CurtirModel)

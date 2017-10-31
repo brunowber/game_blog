@@ -5,37 +5,38 @@
 {% block content %}
 
     <div class='ui grid form' style="padding-top: 50px;">
-    <div class='row'>
-        <div class='three wide column'>
-        </div>
-        <div class='ten wide column'>
-            <h2 class='ui header'>
-                <i class="archive icon"></i>Postagens
-            </h2>
-            <div class="ui fluid form margem list rolagem">
-                <table class="ui table">
-                    <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Pessoa</th>
-                        <th>Visualizar</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for post in object_list %}
-                    <tr>
-                        <td>{{ post.titulo }}</td>
-                        <td>{{ post.usuario }}</td>
-                        <td><a href="{% url 'gameapp:ver-post' post.id %}"><i class="arrow right icon"></i></a></td>
-                    </tr>
-                    {% endfor %}
+        <div class='row'>
+            <div class='three wide column'>
+            </div>
+            <div class='ten wide column'>
+                <h2 class='ui header'>
+                    <i class="archive icon"></i>Postagens
+                </h2>
+                <div class="ui fluid form margem list rolagem">
+                    <table class="ui table">
+                        <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Pessoa</th>
+                            <th>Visualizar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for post in object_list %}
+                            <tr>
+                                <td>{{ post.titulo }}</td>
+                                <td>{{ post.usuario }}</td>
+                                <td><a href="{% url 'gameapp:ver-post' post.id %}"><i class="arrow right icon"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 {% endblock %}

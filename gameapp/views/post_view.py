@@ -1,9 +1,11 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 
 from django.shortcuts import render, redirect
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import ListView
 
+from gameapp.decorators.autenticado import autenticado
 from gameapp.models.post_model import PostModel
 from gameapp.models.usuario_model import UsuarioModel
 from gameapp.models.comentario_model import ComentarioModel
@@ -15,6 +17,7 @@ from gameapp.forms.comentario_forms import ComentarioForm
 class CadastraPost(View):
     template = 'postagem.html'
 
+    @method_decorator(autenticado())
     def get(self, request, identificador=None):
         """Envia o formulário para a criação ou edição dos Posts"""
 
@@ -26,6 +29,7 @@ class CadastraPost(View):
 
         return render(request, self.template, {'form': form})
 
+    @method_decorator(autenticado())
     def post(self, request, identificador=None):
         """Envia para o banco os Posts criados ou editados"""
         user = UsuarioModel.objects.get(pk=request.user.id)
@@ -48,6 +52,7 @@ class CadastraPost(View):
 class CadastraComentario(View):
     template = 'criar_comentario.html'
 
+    @method_decorator(autenticado())
     def get(self, request, identificador=None):
         """Envia o formulário para a criação ou edição dos Comentarios"""
 
@@ -55,6 +60,7 @@ class CadastraComentario(View):
 
         return render(request, self.template, {'form': form})
 
+    @method_decorator(autenticado())
     def post(self, request, identificador=None):
         """Envia para o banco os Comentarios criados ou editados"""
 
@@ -84,6 +90,7 @@ class VerPost(View):
 
         return render(request, self.template, context_dict, {'form': form})
 
+    @method_decorator(autenticado())
     def post(self, request, identificador=None):
         print identificador
         form = ComentarioForm(request.POST)
@@ -94,19 +101,11 @@ class VerPost(View):
             comentario.like = 0
             comentario.save()
 
-            context_dict = {}
-            post = PostModel.objects.get(pk=identificador)
-            context_dict['post'] = post
-            comentarios = ComentarioModel.objects.filter(post=identificador)
-            context_dict['comentarios'] = comentarios
-            form = ComentarioForm()
-            context_dict['comentar'] = form
-
-            return render(request, self.template, context_dict, {'form': form})
+            return redirect("/ver_post/%d" % comentario.post_id)
 
 
 class Like(View):
-
+    @method_decorator(autenticado())
     def post(self, request, identificador=None):
         user = UsuarioModel.objects.get(pk=request.user.id)
         comentario = ComentarioModel.objects.get(pk=identificador)
@@ -128,6 +127,7 @@ class Like(View):
 class LikePost(View):
     template = 'ver_post.html'
 
+    @method_decorator(autenticado())
     def post(self, request, identificador=None):
         user = UsuarioModel.objects.get(pk=request.user.id)
         post = PostModel.objects.get(pk=identificador)

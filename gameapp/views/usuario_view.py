@@ -1,8 +1,11 @@
-# coding=utf-8
-from django.contrib.auth import logout, authenticate, login
+# -*- coding: utf-8 -*-
+from django.contrib.auth import authenticate, login
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
+from django.utils.decorators import method_decorator
 from django.views import View
+
+from gameapp.decorators.autenticado import autenticado
 from gameapp.models.usuario_model import UsuarioModel
 from gameapp.forms.usuario_forms import UsuarioForm, UsuarioEditForm, LoginForm
 
@@ -76,6 +79,7 @@ class Login(View):
 class Perfil(View):
     template = "ver_post.html"
 
+    @method_decorator(autenticado())
     def get(self, request):
         jogo = UsuarioModel.objects.get(pk=request.user.id)
         print jogo.jogo

@@ -8,42 +8,42 @@
         <div class="four wide column"></div>
         <div class="eight wide column column login">
             {% if form.instance.id %}
-                    <form method="POST" action="{% url 'gameapp:edita-post' form.instance.id %}" class='ui form'>
-                    <h2 class='ui header'><i class="user icon"></i>Edite seu Post abaixo.</h2>
-                {% else %}
-                    <form method="POST" action="{% url 'gameapp:criar-post' %}" class='ui form'>
-                    <h2 class='ui header'><i class="user icon"></i>Crie seu post abaixo.</h2>
-                {% endif %}
-                {% csrf_token %}
-                <div class="ui stacked secondary  segment">
-                    <div class="three fields">
-                        <div class="field"></div>
-                        <div class="field">
-                            <h3 class="centralizar">{{ form.titulo.label }}</h3>
-                            <div class="ui left icon input">
-                                <div style="font-weight: bold;">{{ form.titulo }}</div>
-                                {% if form.titulo.errors %}
-                                    <div class="ui red pointing label">
-                                        {{ form.titulo.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-
+                <form method="POST" action="{% url 'gameapp:edita-post' form.instance.id %}" class='ui form'>
+                <h2 class='ui header'><i class="user icon"></i>Edite seu Post abaixo.</h2>
+            {% else %}
+                <form method="POST" action="{% url 'gameapp:criar-post' %}" class='ui form'>
+                <h2 class='ui header'><i class="user icon"></i>Crie seu post abaixo.</h2>
+            {% endif %}
+            {% csrf_token %}
+            <div class="ui stacked secondary  segment">
+                <div class="three fields">
+                    <div class="field"></div>
                     <div class="field">
-                        <h3 class="centralizar">{{ form.texto.label }}</h3>
+                        <h3 class="centralizar">{{ form.titulo.label }}</h3>
                         <div class="ui left icon input">
-                            {{ form.texto }}
-                            {% if form.texto.errors %}
+                            <div style="font-weight: bold;">{{ form.titulo }}</div>
+                            {% if form.titulo.errors %}
                                 <div class="ui red pointing label">
-                                    {{ form.texto.errors }}
+                                    {{ form.titulo.errors }}
                                 </div>
                             {% endif %}
                         </div>
                     </div>
-                    <button type="submit" class="ui fluid large teal submit button">Postar</button>
                 </div>
+
+                <div class="field">
+                    <h3 class="centralizar">{{ form.texto.label }}</h3>
+                    <div class="ui left icon input">
+                        {{ form.texto }}
+                        {% if form.texto.errors %}
+                            <div class="ui red pointing label">
+                                {{ form.texto.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <button type="submit" class="ui fluid large teal submit button">Postar</button>
+            </div>
 
             </form>
 

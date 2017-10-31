@@ -16,4 +16,3 @@ class ComentarioForm(forms.ModelForm):
         if commit:
             comentario.save()
         return comentario
-
