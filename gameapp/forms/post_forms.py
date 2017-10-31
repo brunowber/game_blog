@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 
 from django import forms
 from gameapp.models.post_model import PostModel
@@ -27,7 +27,7 @@ class PostEditForm(forms.ModelForm):
     class Meta:
         model = PostModel
         fields = "__all__"
-        exclude = ['curtir', 'usuario']
+        exclude = ['curtir', 'usuario', 'curtidas']
 
     def save(self, commit=True):
         post = super(PostEditForm, self).save(commit=False)

@@ -18,6 +18,10 @@
 
                 </tbody>
             </table>
+        {% if post.usuario.id == user.id  %}
+            <a href="{% url 'gameapp:criar-post' post.id %}" class="item">
+                <button> Editar</button> </a>
+                {% endif %}
             {% if user.is_authenticated %}
                 <form method="POST" action="{% url 'gameapp:curtir-post' post.id %}">
                     <button type="submit">

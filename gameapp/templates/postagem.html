@@ -7,12 +7,13 @@
     <div class="ui grid form" style="padding-top: 50px;">
         <div class="four wide column"></div>
         <div class="eight wide column column login">
-            <h2 class="ui image header">
-                <div class="centralizar">
-                    Coloque seu cadastro abaixo
-                </div>
-            </h2>
-            <form method="POST" class="ui small form" action="{% url 'gameapp:criar-post' user.id %}">
+            {% if form.instance.id %}
+                    <form method="POST" action="{% url 'gameapp:edita-post' form.instance.id %}" class='ui form'>
+                    <h2 class='ui header'><i class="user icon"></i>Edite seu Post abaixo.</h2>
+                {% else %}
+                    <form method="POST" action="{% url 'gameapp:criar-post' %}" class='ui form'>
+                    <h2 class='ui header'><i class="user icon"></i>Crie seu post abaixo.</h2>
+                {% endif %}
                 {% csrf_token %}
                 <div class="ui stacked secondary  segment">
                     <div class="three fields">

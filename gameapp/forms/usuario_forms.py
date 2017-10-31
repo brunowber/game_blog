@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 
 from django import forms
 from gameapp.models.usuario_model import UsuarioModel

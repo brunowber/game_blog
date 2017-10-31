@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from gameapp import views
 
 from django.conf.urls import url
@@ -22,9 +24,13 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'template_name': 'logout.html'}, name='logout'),
 
     url(r'^perfil/$', Perfil.as_view(), name='perfil-usuario'),
+
+    url(r'^criar_post/$', CadastraPost.as_view(), name='criar-post'),
     url(r'^criar_post/(?P<identificador>\d+)/$', CadastraPost.as_view(), name='criar-post'),
+
     url(r'^ver_post/(?P<identificador>\d+)/$', VerPost.as_view(), name='ver-post'),
     url(r'^ver_post/(?P<identificador>\d+)/$', VerPost.as_view(), name='cadastrar-comentario'),
+
     url(r'^curtir/(?P<identificador>\d+)/$', Like.as_view(), name='curtir-comentario'),
     url(r'^curtir_post/(?P<identificador>\d+)/$', LikePost.as_view(), name='curtir-post'),
 ]

@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 
 from django import forms
 from gameapp.models.comentario_model import ComentarioModel

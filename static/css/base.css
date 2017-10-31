@@ -29,3 +29,9 @@ footer {
 .centralizar{text-align: center;}
 
 .margem{padding-top: 20px;}
+
+.rolagem{
+    width: 600px;
+    height: 700px;
+    overflow: scroll;
+}
