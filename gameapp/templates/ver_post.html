@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %} GameBlog  {% endblock %}
 
@@ -6,9 +7,31 @@
     <div class="ui grid form" style="padding-top: 50px;">
         <div class="five wide column"></div>
         <div class="eight wide column aligned center">
-            <h3>Últimas postagens: {{ post.usuario }}</h3>
-            <h3>Jogo Favorito: {{ post.usuario.jogo }}</h3>
-            <h3>Título: {{ post.titulo }}</h3>
+            <table class="ui table">
+                <thead>
+                <tr>
+                    <th>{% blocktrans %}Usuário{% endblocktrans %}</th>
+                    <th>{% blocktrans %}Jogo favorito{% endblocktrans %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ post.usuario }}</td>
+                    <td>{{ post.usuario.jogo }}</td>
+                </tr>
+                </tbody>
+            </table>
+        <div class="centro" style="">
+            <label>{% blocktrans %}Título{% endblocktrans %}</label>
+        </div>
+                <table class="ui celled table">
+                    <tbody>
+                    <tr>
+                        <td style="text-align:center;vertical-align:middle;">{{ post.titulo }}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
 
             <table class="ui celled table">
                 <tbody>
@@ -20,7 +43,7 @@
             </table>
             {% if post.usuario.id == user.id %}
                 <a href="{% url 'gameapp:criar-post' post.id %}" class="item">
-                    <button> Editar</button>
+                    <button> {% blocktrans %}Editar{% endblocktrans %}</button>
                 </a>
             {% endif %}
             {% if user.is_authenticated %}
@@ -38,7 +61,7 @@
     <div class="ui grid form comments margem">
         <div class="five wide column"></div>
         <div class="eight wide column">
-            <h3 class="ui dividing header">Comentarios</h3>
+            <h3 class="ui dividing header">{% blocktrans %}Comentarios{% endblocktrans %}</h3>
             <div class="comment">
                 {% for comentario in comentarios %}
                     <div class="content margem">
@@ -83,7 +106,7 @@
                       class='margem ui reply form'>
                     {% csrf_token %}
                     <div class="field">
-                        <label>{{ comentar.comentario.label }}</label>
+                        <label>{% blocktrans %}Comentario{% endblocktrans %}</label>
                         {{ comentar.comentario }}
                         {% if form.comentario.errors %}
                             <div class="ui red pointing label">
@@ -94,7 +117,7 @@
                     </div>
 
                     <button type="submit" class="ui blue labeled submit icon button">
-                        <i class="icon edit"></i> Comentar
+                        <i class="icon edit"></i> {% blocktrans %}Comentar{% endblocktrans %}
                     </button>
                 </form>
             {% endif %}

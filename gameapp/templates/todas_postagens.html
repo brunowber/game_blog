@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %} GameBlog  {% endblock %}
 
@@ -10,15 +11,15 @@
             </div>
             <div class='ten wide column'>
                 <h2 class='ui header'>
-                    <i class="archive icon"></i>Postagens
+                    <i class="archive icon"></i>{% blocktrans %}Postagens{% endblocktrans %}
                 </h2>
                 <div class="ui fluid form margem list rolagem">
                     <table class="ui table">
                         <thead>
                         <tr>
-                            <th>Título</th>
-                            <th>Pessoa</th>
-                            <th>Visualizar</th>
+                            <th>{% blocktrans %}Título{% endblocktrans %}</th>
+                            <th>{% blocktrans %}Pessoa{% endblocktrans %}</th>
+                            <th>{% blocktrans %}Visualizar{% endblocktrans %}</th>
                         </tr>
                         </thead>
                         <tbody>

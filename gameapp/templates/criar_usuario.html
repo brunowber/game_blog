@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %} Criar Usuário  {% endblock %}
 
@@ -9,17 +10,17 @@
             <div class='fourteen wide column'>
                 {% if form.instance.id %}
                     <form method="POST" action="{% url 'gameapp:edita-usuario' form.instance.id %}" class='ui form'>
-                    <h2 class='ui header'><i class="user icon"></i>Altere seus dados abaixo.</h2>
+                    <h2 class='ui header'><i class="user icon"></i>{% blocktrans %}Altere seus dados abaixo.{% endblocktrans %}</h2>
                 {% else %}
                     <form method="POST" action="{% url 'gameapp:cadastro-usuario' %}" class='ui form'>
-                    <h2 class='ui header'><i class="user icon"></i>Prencha seus dados abaixo.</h2>
+                    <h2 class='ui header'><i class="user icon"></i>{% blocktrans %}Prencha seus dados abaixo.{% endblocktrans %}</h2>
                 {% endif %}
                 {% csrf_token %}
 
 
                 <div class="two fields">
                     <div class="field">
-                        <label>Nome</label>
+                        <label>{% blocktrans %}Nome{% endblocktrans %}</label>
                         {{ form.first_name }}
                         {% if form.first_name.errors %}
                             <div class="ui red pointing label">
@@ -29,7 +30,7 @@
                     </div>
 
                     <div class="field">
-                        <label>Sobrenome</label>
+                        <label>{% blocktrans %}Sobrenome{% endblocktrans %}</label>
                         {{ form.last_name }}
                         {% if form.last_name.errors %}
                             <div class="ui red pointing label">
@@ -43,7 +44,7 @@
                 {% if not user.id %}
                     <div class='two fields'>
                     <div class="field">
-                        <label>Usu&aacute;rio</label>
+                        <label>{% blocktrans %}Usu&aacute;rio{% endblocktrans %}</label>
                         {{ form.username }}
                         {% if form.username.errors %}
                             <div class="ui red pointing label">
@@ -54,7 +55,7 @@
                 {% endif %}
 
                 <div class="field">
-                    <label>Senha</label>
+                    <label>{% blocktrans %}Senha{% endblocktrans %}</label>
 
                     {{ form.password }}
                     {% if form.password.errors %}
@@ -68,7 +69,7 @@
 
                 <div class="">
                     <div class="field">
-                        <label>Jogo Favorito</label>
+                        <label>{% blocktrans %}Jogo Favorito{% endblocktrans %}</label>
 
                         {{ form.jogo }}
                         {% if form.jogo.errors %}
@@ -80,7 +81,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="ui fluid large teal submit button">Salvar</button>
+                <button type="submit" class="ui fluid large teal submit button">{% blocktrans %}Salvar{% endblocktrans %}</button>
                 </form>
             </div>
             </form>

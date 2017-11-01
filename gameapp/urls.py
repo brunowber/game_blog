@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """Configurações das Urls"""
-
+from __future__ import unicode_literals
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
-
 from gameapp import views
 
 from gameapp.views.usuario_view import CadastraUsuario, Login, Perfil

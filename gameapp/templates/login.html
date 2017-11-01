@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %} Login  {% endblock %}
 
@@ -8,7 +9,7 @@
         <div class="eight wide column column login">
             <h2 class="ui image header">
                 <div class="content">
-                    Coloque seu cadastro abaixo
+                    {% blocktrans %}Coloque seu cadastro abaixo{% endblocktrans %}
                 </div>
             </h2>
             <form method="POST" class="ui small form" action="{% url 'gameapp:login' %}">
@@ -43,7 +44,7 @@
             </form>
 
             <div class="ui message">
-                Não tem conta? <a href="/cad_usuario/">Registre-se</a>
+                {% blocktrans %}Não tem conta?{% endblocktrans %} <a href="/cad_usuario/">{% blocktrans %}Registre-se{% endblocktrans %}</a>
             </div>
         </div>
     </div>

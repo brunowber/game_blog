@@ -13,10 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from __future__ import unicode_literals
 from django.conf.urls import url, include
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
+    url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^admin/', admin.site.urls),
-    url(r'', include('gameapp.urls', namespace="gameapp")),
-]
+    url(r'^', include('gameapp.urls', namespace='gameapp')),
+)

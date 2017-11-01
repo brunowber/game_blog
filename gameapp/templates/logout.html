@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %} Logout  {% endblock %}
 
@@ -8,8 +9,8 @@
     <article class="six wide column">
 
         <div class="ui negative message">
-            <div class="header">Você foi deslogado</div>
-            <p>Você será redirecionado para tela de entrada em instantes.</p>
+            <div class="header">{% blocktrans %}Você saiu{% endblocktrans %}</div>
+            <p>{% blocktrans %}Em alguns segundos será redirecionado para a tela inicial.{% endblocktrans %}</p>
         </div>
 
     </article>
