@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-06 13:36-0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: desweb/settings.py:18
+msgid "Brazilian (Portuguese)"
+msgstr ""
+
+#: desweb/settings.py:19
+msgid "English"
+msgstr ""
+
+#: gameapp/templates/base.html:19
+msgid "Página inicial"
+msgstr "Home"
+
+#: gameapp/templates/base.html:23
+msgid "Criar Postagem"
+msgstr "Create Post"
+
+#: gameapp/templates/base.html:27
+msgid "Ver todos os posts"
+msgstr "View all posts"
+
+#: gameapp/templates/base.html:31 gameapp/templates/ver_post.html:48
+msgid "Editar"
+msgstr "Edit"
+
+#: gameapp/templates/base.html:32
+msgid "Perfil"
+msgstr "Profile"
+
+#: gameapp/templates/base.html:33
+msgid "Sair"
+msgstr "Logout"
+
+#: gameapp/templates/base.html:36
+msgid "Criar Conta"
+msgstr "Create Account"
+
+#: gameapp/templates/base.html:37
+msgid "Entrar"
+msgstr "Login"
+
+#: gameapp/templates/criar_usuario.html:13
+msgid "Altere seus dados abaixo."
+msgstr "Change your data below."
+
+#: gameapp/templates/criar_usuario.html:16
+msgid "Prencha seus dados abaixo."
+msgstr "fill in your details below."
+
+#: gameapp/templates/criar_usuario.html:23
+msgid "Nome"
+msgstr "Name"
+
+#: gameapp/templates/criar_usuario.html:33
+msgid "Sobrenome"
+msgstr "Last Name"
+
+#: gameapp/templates/criar_usuario.html:47
+msgid "Usu&aacute;rio"
+msgstr "Username"
+
+#: gameapp/templates/criar_usuario.html:58
+msgid "Senha"
+msgstr "Password"
+
+#: gameapp/templates/criar_usuario.html:72
+msgid "Jogo Favorito"
+msgstr "Favorite Game"
+
+#: gameapp/templates/criar_usuario.html:84
+msgid "Salvar"
+msgstr "Save"
+
+#: gameapp/templates/index.html:15
+msgid "Últimas postagens"
+msgstr "Latests posts"
+
+#: gameapp/templates/index.html:22 gameapp/templates/postagem.html:23
+#: gameapp/templates/todas_postagens.html:20 gameapp/templates/ver_post.html:25
+msgid "Título"
+msgstr "Title"
+
+#: gameapp/templates/index.html:23 gameapp/templates/todas_postagens.html:21
+msgid "Pessoa"
+msgstr "User"
+
+#: gameapp/templates/index.html:24 gameapp/templates/todas_postagens.html:22
+msgid "Visualizar"
+msgstr "View"
+
+#: gameapp/templates/login.html:12
+msgid "Coloque seu cadastro abaixo"
+msgstr "Place your records below."
+
+#: gameapp/templates/login.html:47
+#| msgid "Não tem conta?"
+msgid "Não possui conta?"
+msgstr "Do not have an account?"
+
+#: gameapp/templates/login.html:47
+msgid "Registre-se"
+msgstr "Register"
+
+#: gameapp/templates/logout.html:12
+msgid "Você saiu"
+msgstr "Logout"
+
+#: gameapp/templates/logout.html:13
+msgid "Em alguns segundos será redirecionado para a tela inicial."
+msgstr "In a few seconds you will be redirected to the home screen."
+
+#: gameapp/templates/postagem.html:13
+msgid "Edite seu Post abaixo."
+msgstr "Edit your Post bellow."
+
+#: gameapp/templates/postagem.html:16
+msgid "Crie seu post abaixo."
+msgstr "Create your post bellow."
+
+#: gameapp/templates/postagem.html:36 gameapp/templates/ver_post.html:36
+msgid "Texto"
+msgstr "Text"
+
+#: gameapp/templates/postagem.html:46
+msgid "Postar"
+msgstr "Post"
+
+#: gameapp/templates/todas_postagens.html:14
+msgid "Postagens"
+msgstr "Posts"
+
+#: gameapp/templates/ver_post.html:13
+msgid "Usuário"
+msgstr "User"
+
+#: gameapp/templates/ver_post.html:14
+msgid "Jogo favorito"
+msgstr "Favorite Game"
+
+#: gameapp/templates/ver_post.html:66
+msgid "Comentarios"
+msgstr "Comment"
+
+#: gameapp/templates/ver_post.html:111
+msgid "Comentario"
+msgstr "Comment"
+
+#: gameapp/templates/ver_post.html:122
+msgid "Comentar"
+msgstr "Comment"

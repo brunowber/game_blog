@@ -28,9 +28,9 @@
             </a>
             <div class="direita">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'gameapp:edita-usuario' user.id %}" class="item"><i class="user icon"></i>{% blocktrans %}Edit{% endblocktrans %}
+                    <a href="{% url 'gameapp:edita-usuario' user.id %}" class="item"><i class="user icon"></i>{% blocktrans %}Editar{% endblocktrans %}
                         {% blocktrans %}Perfil{% endblocktrans %}</a>
-                    <a href="/logout/" class="item"><i class="sign out icon"></i>Sair</a>
+                    <a href="/logout/" class="item"><i class="sign out icon"></i>{% blocktrans %}Sair{% endblocktrans %}</a>
                 {% endif %}
                 {% if user.is_anonymous %}
                     <a href="/cad_usuario/" class="item"><i class="add user icon"></i>{% blocktrans %}Criar Conta{% endblocktrans %}</a>
