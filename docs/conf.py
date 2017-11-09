@@ -16,11 +16,22 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-from django.conf import settings
-sys.path.insert(0, os.path.abspath('.'))
-settings.configure()
+import os, sys
+from os import path
+
+import django
+
+sys.path.append(os.path.abspath('.'))
+sys.path.append(os.path.abspath('..'))
+# sys.path.append(os.path.abspath('../../lib/python2.7/site-packages/'))
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "desweb.settings")
+django.setup()
+package_dir = path.abspath(path.dirname(__file__))
+template_path = path.join(package_dir, 'themes')
+django.setup()
+local_path = lambda path: os.path.join(os.path.dirname(__file__), path)
+
+sys.path.append(local_path('..'))
 
 
 # -- General configuration ------------------------------------------------
@@ -90,7 +101,7 @@ todo_include_todos = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -101,7 +112,7 @@ html_theme = 'alabaster'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+#html_static_path = ['_static']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
