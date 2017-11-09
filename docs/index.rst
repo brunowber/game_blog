@@ -8,6 +8,7 @@ Bem-vindo a documentação do Game_Blog!
 
 .. toctree::
    requirements
+   modelagens
    modules/usuarios
    modules/post
    modules/comentario
