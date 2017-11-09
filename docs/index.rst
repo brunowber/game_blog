@@ -9,13 +9,8 @@ Welcome to Game_Blog's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   requirements
    modules/views
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   modules/usuarios
+   modules/post
+   modules/comentario
