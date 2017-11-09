@@ -16,22 +16,11 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os, sys
-from os import path
-
-import django
-
-sys.path.append(os.path.abspath('.'))
-sys.path.append(os.path.abspath('..'))
-# sys.path.append(os.path.abspath('../../lib/python2.7/site-packages/'))
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gameapp.settings")
-django.setup()
-package_dir = path.abspath(path.dirname(__file__))
-template_path = path.join(package_dir, 'themes')
-django.setup()
-local_path = lambda path: os.path.join(os.path.dirname(__file__), path)
-
-sys.path.append(local_path('..'))
+import os
+import sys
+from django.conf import settings
+sys.path.insert(0, os.path.abspath('.'))
+settings.configure()
 
 
 # -- General configuration ------------------------------------------------

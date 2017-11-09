@@ -1,5 +1,5 @@
 Usuarios
-======
+=========
 .. automodule:: gameapp.models.usuario_model
 
-.. automodule:: saoapp.views.usuario_view
+.. automodule:: gameapp.views.usuario_view

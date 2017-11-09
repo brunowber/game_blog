@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Bem-vindo a documentação do Game_Blog!
-=====================================
+=======================================
 
 .. toctree::
    requirements

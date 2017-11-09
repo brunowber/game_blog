@@ -1,4 +1,4 @@
 Post
 ======
 .. automodule:: gameapp.models.post_model
-.. automodule:: saoapp.views.post_view
+.. automodule:: gameapp.views.post_view
