@@ -24,7 +24,7 @@ import django
 sys.path.append(os.path.abspath('.'))
 sys.path.append(os.path.abspath('..'))
 # sys.path.append(os.path.abspath('../../lib/python2.7/site-packages/'))
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sao.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gameapp.settings")
 django.setup()
 package_dir = path.abspath(path.dirname(__file__))
 template_path = path.join(package_dir, 'themes')
