@@ -2,5 +2,5 @@ Django==1.10
 olefile==0.44
 Pillow==3.4.2
 Pillow-PIL==0.1.dev0
-sphinx
-sphinx_rtd_theme
+sphinx==1.6.5
+sphinx_rtd_theme==0.2.4
