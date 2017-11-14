@@ -1,3 +1,4 @@
+# encoding=utf8
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
@@ -8,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-06 13:36-0200\n"
+"POT-Creation-Date: 2017-11-14 14:44-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,6 +25,15 @@ msgstr ""
 #: desweb/settings.py:19
 msgid "English"
 msgstr ""
+
+#: gameapp/forms/usuario_forms.py:52 gameapp/forms/usuario_forms.py:53
+#: gameapp/templates/ver_post.html:13
+msgid "Usuário"
+msgstr "User"
+
+#: gameapp/forms/usuario_forms.py:54 gameapp/templates/criar_usuario.html:58
+msgid "Senha"
+msgstr "Password"
 
 #: gameapp/templates/base.html:19
 msgid "Página inicial"
@@ -77,10 +87,6 @@ msgstr "Last Name"
 msgid "Usu&aacute;rio"
 msgstr "Username"
 
-#: gameapp/templates/criar_usuario.html:58
-msgid "Senha"
-msgstr "Password"
-
 #: gameapp/templates/criar_usuario.html:72
 msgid "Jogo Favorito"
 msgstr "Favorite Game"
@@ -111,7 +117,6 @@ msgid "Coloque seu cadastro abaixo"
 msgstr "Place your records below."
 
 #: gameapp/templates/login.html:47
-#| msgid "Não tem conta?"
 msgid "Não possui conta?"
 msgstr "Do not have an account?"
 
@@ -146,10 +151,6 @@ msgstr "Post"
 #: gameapp/templates/todas_postagens.html:14
 msgid "Postagens"
 msgstr "Posts"
-
-#: gameapp/templates/ver_post.html:13
-msgid "Usuário"
-msgstr "User"
 
 #: gameapp/templates/ver_post.html:14
 msgid "Jogo favorito"

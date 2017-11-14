@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 """Forms para usuários"""
 
+from __future__ import unicode_literals
 from django import forms
+
+from django.utils.translation import ugettext_lazy as _
 from gameapp.models.usuario_model import UsuarioModel
 
 
@@ -47,9 +50,9 @@ class UsuarioEditForm(forms.ModelForm):
 
 
 class LoginForm(forms.ModelForm):
-    username = forms.CharField(max_length=40, label="Usuráio",
-                               widget=forms.TextInput(attrs={'placeholder': 'Usuário'}))
-    password = forms.CharField(max_length=20, widget=forms.PasswordInput(attrs={'placeholder': 'Senha'}) )
+    username = forms.CharField(max_length=40, label=_("Usuário"),
+                               widget=forms.TextInput(attrs={'placeholder': _('Usuário')}))
+    password = forms.CharField(max_length=20, widget=forms.PasswordInput(attrs={'placeholder': _('Senha')}))
 
     class Meta:
         model = UsuarioModel
